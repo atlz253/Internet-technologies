@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>График [И504Б Алексеев Федор]</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/graph.css">
 </head>
 
 <body>
@@ -27,9 +28,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="index.html#definition">Определение слова «кошка»</a></li>
-                            <li><a class="dropdown-item" href="index.html#role">Значение и этимология слова «кошка»</a></li>
+                            <li><a class="dropdown-item" href="index.html#role">Значение и этимология слова «кошка»</a>
+                            </li>
                             <li><a class="dropdown-item" href="index.html#science">Научная классификация</a></li>
-                            <li><a class="dropdown-item" href="index.html#history">Происхождение и история одомашнивания</a></li>
+                            <li><a class="dropdown-item" href="index.html#history">Происхождение и история
+                                    одомашнивания</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -43,7 +46,17 @@
         </div>
     </nav>
     <div class="container">
-        <canvas id="myChart"></canvas>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10"><canvas id="myChart"></canvas></div>
+        </div>
+        <div class="row justify-content-center">
+            <select class="col-12 col-sm-8 col-md-6" name="graph-color" id="graph-color">
+                <option value="red">красный</option>
+                <option value="green">зеленый</option>
+                <option value="blue">синий</option>
+            </select>
+            <button type="button" id="graph-color-btn" class="btn btn-primary col-sm-4 col-md-2">Поменять цвет</button>
+        </div>
     </div>
     <script src="js/jarts.js"></script>
     <script src="js/graph.js"></script>
