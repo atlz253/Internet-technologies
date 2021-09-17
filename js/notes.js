@@ -1,26 +1,35 @@
-let notes = document.querySelectorAll(".note");
+let notes = Array.from(document.querySelectorAll(".note"));
 
-notes.forEach(note => {
+for (let i = 0; i < notes.length; i++) {
+    let note = notes[i];
+
     note.onmousedown = (startPos) => {
         note.classList.add("note_hidden");
 
         document.onmousemove = (e) => {
-            const colNum = Math.trunc(document.querySelector("#wrapper").offsetWidth / note.offsetWidth) - 1;
-            console.log(colNum);
+            let newPosX = e.screenX - startPos.screenX;
+            let newPosY = e.screenY - startPos.screenY;
 
-            if (note != notes.lastChild && e.screenX - startPos.screenX > 50)
-            {
-                note.nextSibling.after(note);
+            if (note != notes[notes.length - 1] && newPosX > 100) {
+                notes[i + 1].after(note);
                 startPos = e;
-            }
-            else if (note != notes.firstChild && e.screenX - startPos.screenX < -50)
-            {
-                note.previousSibling.before(note);
-                startPos = e;
-            }
-            else if (e.screenY - startPos.screenY < -100)
-            {
 
+                notes[i] = notes[i + 1];
+                notes[++i] = note;
+            }
+            else if (note != notes[0] && newPosX < -100) {
+                notes[i - 1].before(note);
+                
+                startPos = e;
+
+                notes[i] = notes[i - 1];
+                notes[--i] = note;
+            }
+            else if (newPosY > 100)
+            {
+                let colNum = Math.trunc(document.querySelector("#wrapper").offsetWidth / note.clientWidth);
+
+                console.log(colNum);
             }
         }
 
@@ -30,4 +39,4 @@ notes.forEach(note => {
             note.classList.remove("note_hidden");
         }
     }
-});
+}
