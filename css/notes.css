@@ -15,6 +15,10 @@
     cursor: grab;
 }
 
+.note:first-child {
+    background-color: #f1aeb5;
+}
+
 .note__title, .note__content {
     width: 100%;
     background-color: transparent;
