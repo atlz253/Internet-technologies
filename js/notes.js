@@ -7,11 +7,11 @@ document.querySelectorAll(".note").forEach(note => {
             let newPosY = e.screenY - startPos.screenY;
             let notes = document.querySelectorAll(".note");
             
-            if (note != notes[notes.length - 1] && newPosX > 100) { // TODO: добавить проверку на последний элемент
+            if (note != notes[notes.length - 1] && newPosX > 75) {
                 note.nextSibling.after(note);
                 startPos = e;
             }
-            else if (note != notes[0] && newPosX < -100) { // TODO: добавить проверку на первый элемент
+            else if (note != notes[0] && newPosX < -75) {
                 note.previousSibling.before(note);
                 startPos = e;
             }
