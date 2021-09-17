@@ -1,26 +1,33 @@
-document.querySelectorAll(".note").forEach(note => {
-    let move = (e) => {
-        note.style.left = e.pageX - note.offsetWidth / 2 + 'px';
-        note.style.top = e.pageY - note.offsetHeight / 2 + 'px';
-    }
+let notes = document.querySelectorAll(".note");
 
-    note.onmousedown = (e) => {
-        note.style.position = "absolute";
-        note.style.zIndex = 100;
+notes.forEach(note => {
+    note.onmousedown = (startPos) => {
+        note.classList.add("note_hidden");
 
-        move(e)
+        document.onmousemove = (e) => {
+            const colNum = Math.trunc(document.querySelector("#wrapper").offsetWidth / note.offsetWidth) - 1;
+            console.log(colNum);
 
-        document.body.appendChild(note);
+            if (note != notes.lastChild && e.screenX - startPos.screenX > 50)
+            {
+                note.nextSibling.after(note);
+                startPos = e;
+            }
+            else if (note != notes.firstChild && e.screenX - startPos.screenX < -50)
+            {
+                note.previousSibling.before(note);
+                startPos = e;
+            }
+            else if (e.screenY - startPos.screenY < -100)
+            {
 
-        document.onmousemove = (e) => move(e);
+            }
+        }
 
-        note.onmouseup = () => {
+        document.onmouseup = () => {
             document.onmousemove = null;
             note.onmouseup = null;
-
-            document.querySelectorAll(".note").forEach(n => {
-                console.log(n);
-            });
+            note.classList.remove("note_hidden");
         }
     }
 });

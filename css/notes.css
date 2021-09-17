@@ -33,3 +33,13 @@
 .note__content {
     resize: none;
 }
+
+.note_hidden {
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 0px transparent;
+    border: 1px dashed var(--bs-gray);
+}
+
+.note_hidden>.note__top, .note_hidden>.note__body {
+    display: none;
+}
