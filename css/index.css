@@ -5,3 +5,27 @@ img {
 .text-justify {
     text-align: justify;
 }
+
+.img-thumb {
+    max-width: 100%;
+    border: 1px solid #dee2e6;
+    border: 1px solid var(--bs-gray-300);
+    padding: 5px;
+    border-radius: .3rem;
+}
+
+.img-wrapper {
+    position: relative;
+}
+
+.img-title {
+    position: absolute;
+    bottom: .2rem;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.text-shadow {
+    text-shadow: #343a40 .1rem .1rem .2rem;
+    text-shadow: var(--bs-dark) .1rem .1rem .2rem;
+}
