@@ -8,6 +8,18 @@
     <title>Разное [И504Б Алексеев Федор]</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <style>
+        tr {
+            transition: all 0.5s ease;
+        }
+
+        tr:hover {
+            color: #000;
+            border-color: #bacbe6;
+            background-color: #bfd1ec;
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,6 +70,40 @@
                 <img class="img-thumb shadow mx-auto d-block" src="img/4.jpg" alt="мемасик)"
                     title="Демонстрация подписи">
             </button>
+        </div>
+        <div class="row">
+            <h2 class="text-center">Выделенная строка таблицы</h2>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
