@@ -1,25 +1,13 @@
-document.querySelectorAll("img").forEach(img => {    
-    img.onclick = () => {
-        let modal = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-body");
-        while (modal.firstChild) {
-            modal.removeChild(modal.firstChild);
-        }
-        modal.appendChild(img.cloneNode());
-        
-        let title = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-header>.modal-title");
-        title.textContent = img.alt;
-    }
-});
+document.querySelectorAll("button").forEach(button => {
+    if (button.hasAttribute("data-bs-target") && button.getAttribute("data-bs-target") == "#modal-img")
+        button.onclick = () => {
+            let modal = document.querySelector("#modal-img .modal-body");
+            while (modal.firstChild) {
+                modal.removeChild(modal.firstChild);
+            }
+            modal.appendChild(button.firstChild.cloneNode());
 
-document.querySelectorAll(".img-wrapper").forEach(wrapper => {
-    wrapper.onclick = () => {
-        let modal = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-body");
-        while (modal.firstChild) {
-            modal.removeChild(modal.firstChild);
+            let title = document.querySelector("#modal-img .modal-title");
+            title.textContent = button.firstChild.alt;
         }
-        modal.appendChild(wrapper.firstChild.cloneNode());
-
-        let title = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-header>.modal-title");
-        title.textContent = wrapper.firstChild.alt;
-    }
 });
