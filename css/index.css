@@ -18,14 +18,27 @@ img {
     position: relative;
 }
 
-.img-title {
-    position: absolute;
-    bottom: .5rem;
-    width: 100%;
+.img-wrapper::after {    
+    content: "";
     font-weight: bolder;
+    color: rgba(248, 249, 250, 1) !important;
+    text-shadow: #212529 .1rem .1rem .2rem;
+    font-size: calc(1.3rem + .6vw);
+    position: absolute;
+    bottom: .7rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
 
-.text-shadow {
-    text-shadow: #343a40 .1rem .1rem .2rem;
-    text-shadow: var(--bs-dark) .1rem .1rem .2rem;
+#img-1::after {
+    content: "Котик в пижаме";
+}
+
+#img-2::after {
+    content: "Злой котик";
+}
+
+#img-3::after {
+    content: "Котик читает";
 }

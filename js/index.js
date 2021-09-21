@@ -1,13 +1,4 @@
-document.querySelectorAll("img").forEach(img => {
-    if (img.hasAttribute("title"))
-    {
-        let title = document.createElement("h3");
-        title.className = "img-title text-center text-light text-shadow";
-        title.innerHTML = img.getAttribute("title");
-
-        img.after(title);
-    }
-    
+document.querySelectorAll("img").forEach(img => {    
     img.onclick = () => {
         let modal = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-body");
         while (modal.firstChild) {
@@ -17,5 +8,18 @@ document.querySelectorAll("img").forEach(img => {
         
         let title = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-header>.modal-title");
         title.textContent = img.alt;
+    }
+});
+
+document.querySelectorAll(".img-wrapper").forEach(wrapper => {
+    wrapper.onclick = () => {
+        let modal = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-body");
+        while (modal.firstChild) {
+            modal.removeChild(modal.firstChild);
+        }
+        modal.appendChild(wrapper.firstChild.cloneNode());
+
+        let title = document.querySelector("#modal-img>.modal-dialog>.modal-content>.modal-header>.modal-title");
+        title.textContent = wrapper.firstChild.alt;
     }
 });
