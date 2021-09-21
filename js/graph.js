@@ -1,15 +1,14 @@
-const labels = [
-    'Япония',
-    'Украина',
-    'Германия',
-    'Великобритания',
-    'Италия',
-    'Франция',
-    'Бразилия',
-    'Россия',
-    'Китай',
-    'Америка'
-];
+let table = document.querySelector("#graph-table"),
+    labels = [],
+    values = [];
+
+table.querySelectorAll("tbody td:first-child").forEach(country => {
+   labels.push(country.innerHTML); 
+});
+
+table.querySelectorAll("tbody td:nth-child(2)").forEach(value => {
+    values.push(value.innerHTML);
+});
 
 let data = {
     labels: labels,
@@ -17,7 +16,7 @@ let data = {
         label: 'Место в рейтинге стран, в которых живет больше всего кошек (млн.)',
         backgroundColor: 'rgb(220, 53, 69)',
         borderColor: 'rgb(220, 53, 69)',
-        data: [7.2, 7.5, 7.7, 7.75, 9.5, 9.5, 12.5, 12.5, 53, 76.5],
+        data: values,
     }]
 };
 
