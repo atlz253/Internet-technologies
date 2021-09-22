@@ -18,23 +18,16 @@
     background-color: #f1aeb5;
 }
 
-.note__title, .note__content {
-    width: 100%;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.note__title:focus, .note__content:focus {
-    outline: none !important;
-}
-
-.note__title {
-    text-align: center;
-    text-transform: uppercase;
-}
-
 .note__content {
-    resize: none;
+    width: 100%;
+    padding: .5rem;
+    text-align: justify;
+    position: relative;
+    user-select: none;
+}
+
+.note__content>h5 {
+    text-align: center;
 }
 
 .note_hidden {
@@ -43,6 +36,6 @@
     border: 1px dashed var(--bs-gray);
 }
 
-.note_hidden>.note__top, .note_hidden>.note__body {
+.note_hidden>.note__content {
     display: none;
 }
