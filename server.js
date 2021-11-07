@@ -17,6 +17,8 @@ const upload = multer({ storage: storage });
 
 const app = express();
 
+app.set("view engine", "hbs");
+
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/js", express.static(__dirname + "/js"));
 app.use("/img", express.static(__dirname + "/img"));
@@ -28,20 +30,10 @@ app.get("/graph.html", (request, response) => response.sendFile(__dirname + "/gr
 app.get("/notes.html", (request, response) => response.sendFile(__dirname + "/notes.html"));
 app.get("/form.html", (request, response) => response.sendFile(__dirname + "/form.html"));
 
-app.post("/form.html/submit", upload.single("avatar"), (request, response) => {
-    response.send(`<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Результат</title>
-    </head>
-    <body>
-        <a href="/uploads/${request.file.filename}">ссылка</a>
-        <img src="/uploads/${request.file.filename}">
-    </body>
-    </html>`);
+app.post("/form.html", upload.single("avatar"), (request, response) => {
+    response.render(__dirname + "/result.hbs", {
+        link: `/uploads/${request.file.filename}`
+    });
 })
 
 app.listen(8000);
