@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета [И504Б Алексеев Федор]</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Lab2</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Статья
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="index.html#definition">Определение слова «кошка»</a></li>
+                            <li><a class="dropdown-item" href="index.html#role">Значение и этимология слова «кошка»</a>
+                            </li>
+                            <li><a class="dropdown-item" href="index.html#science">Научная классификация</a></li>
+                            <li><a class="dropdown-item" href="index.html#history">Происхождение и история
+                                    одомашнивания</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="graph.html">Графики</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html">Заметки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="form.html">Анкета</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h2><b>Регистрация нового пользователя</b></h2>
+        <form action="form.html/submit" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label">Имя</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя"
+                        minlength="1" maxlength="12" pattern="^(([a-zA-Z]+)|([а-яА-Я]+))$" required>
+                </div>
+                <div class="col">
+                    <label for="middleName" class="form-label">Отчество (необязательно)</label>
+                    <input type="text" class="form-control" name="middlename" id="middleName"
+                        placeholder="Введите отчество" maxlength="12" pattern="^(([a-zA-Z]+)|([а-яА-Я]+))$">
+                </div>
+                <div class="col">
+                    <label for="lastName" class="form-label">Фамилия</label>
+                    <input type="text" class="form-control" name="lastname" id="lastName" placeholder="Введите фамилию"
+                        minlength="1" maxlength="12" pattern="^(([a-zA-Z]+)|([а-яА-Я]+))$" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="example@mail.ru"
+                        required>
+                </div>
+                <div class="col">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" class="form-control" name="password" id="password" minlength="8"
+                        maxlength="12" placeholder="Введите пароль" required>
+                </div>
+                <div class="col">
+                    <label class="form-label">Повторите пароль</label>
+                    <input type="password" class="form-control" id="passwordcheck" minlength="8" maxlength="12"
+                        placeholder="Подтвердите пароль" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Роль пользователя</label>
+                    <select name="role" class="form-select">
+                        <option value="admin" selected>Пользователь</option>
+                        <option value="user">Админ</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="reputation" class="form-label">Репутация пользователя</label>
+                    <input type="number" name="reputation" class="form-control" id="reputation" placeholder="от 1 до 10"
+                        min="1" max="10" required>
+                </div>
+                <div class="col">
+                    <label for="date" class="form-label">Дата смены пароля</label>
+                    <input type="date" name="date" class="form-control" id="date" required>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label for="avatar" class="form-label">Аватар пользователя (*.png, *.jpeg)</label>
+                    <input type="file" name="avatar" class="form-control" id="avatar" accept="image/jpeg, image/png">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="about" class="form-label">Подпись пользователя (Необязательно)</label>
+                    <textarea class="form-control" name="about" id="about" cols="30" rows="10"
+                        placeholder="Расскажите о себе..."></textarea>
+                </div>
+            </div>
+            <hr>
+            <input class="form-check-input" type="checkbox" value="" id="send">
+            <label for="send" class="form-label">Отправить логин и пароль на Email</label>
+            <hr>
+            <div class="row">
+                <div class="col">Подписаться на новостную рассылку?</div>
+                <div class="col">
+                    <input class="form-check-input" type="radio" name="news">
+                    <label class="form-check-label" for="news">
+                        да
+                    </label>
+                </div>
+                <div class="col">
+                    <input class="form-check-input" type="radio" name="news">
+                    <label class="form-check-label" for="news">
+                        да
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <input class="btn btn-primary" type="submit" value="Добавить пользователя">
+            <input class="btn btn-primary" type="reset" value="Очистить форму">
+        </form>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
