@@ -31,7 +31,13 @@ app.get("/notes.html", (request, response) => response.sendFile(__dirname + "/no
 app.get("/form.html", (request, response) => response.sendFile(__dirname + "/form.html"));
 
 app.post("/form.html", upload.single("avatar"), (request, response) => {
+    let fileName = `${(new Date()).getTime()}.txt`;
+    let data = `${request.body["name"]}\n${request.body["middlename"]}\n${request.body["lastname"]}\n${request.body["email"]}\n${request.body["nickname"]}\n${request.body["password"]}\n${request.body["role"]}\n${request.body["reputation"]}\n${request.body["date"]}`;
+
+    fs.writeFileSync(`${__dirname}/uploads/${fileName}`, data);
+
     response.render(__dirname + "/result.hbs", {
+        file: `/uploads/${fileName}`,
         link: `/uploads/${request.file.filename}`
     });
 })
