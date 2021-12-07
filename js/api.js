@@ -73,7 +73,13 @@ let data = {
 const config = {
     type: 'line',
     data: data,
-    options: {}
+    options: {
+        plugins: {
+            legend: {
+                display: false
+            },
+        }
+    }
 };
 
 var myChart = new Chart(
@@ -97,38 +103,50 @@ document.querySelector("#graph-switch-btn").onclick = () => {
             let jsondata = JSON.parse(request.responseText);
 
             if (jsondata["status"] == "OK") {
+                let last;
                 values = [];
                 labels = [];
 
+                data.datasets = [data.datasets[data.datasets.length - 1]];
                 jsondata["data"].forEach(element => {
+                    if (element["close"] / last - 100 > 0.1) { // если значение оличается на 0.1%, то отметить точкой
+                        let dotdata = [];
+                        values.forEach(item => dotdata.push(null));
+                        dotdata.push(element["close"])
+
+                        data.datasets.unshift({
+                            label: '',
+                            backgroundColor: 'rgb(0, 0, 255)',
+                            borderColor: 'rgb(0, 0, 255)',
+                            data: dotdata
+                        });
+                    }
+
                     values.push(element["close"]);
                     labels.push(element["datetime"]);
+
+                    last = element["close"] / 100;
                 });
 
                 data.labels = labels;
-                data.datasets[0].data = values;
-                data.datasets[0].label = document.querySelector("#graph-avaible").value;
+                data.datasets[data.datasets.length - 1].data = values;
+                data.datasets[data.datasets.length - 1].label = document.querySelector("#graph-avaible").value;
 
                 myChart.update();
             }
-            else if (jsondata["data"]["app_key"]["status"] == "Error")
-            {
+            else if (jsondata["data"]["app_key"]["status"] == "Error") {
                 alert(jsondata["data"]["app_key"]["message"]);
             }
-            else if (jsondata["data"]["secid"]["status"] == "Error")
-            {
+            else if (jsondata["data"]["secid"]["status"] == "Error") {
                 alert(jsondata["data"]["secid"]["message"]);
             }
-            else if (jsondata["data"]["interval"]["status"] == "Error")
-            {
+            else if (jsondata["data"]["interval"]["status"] == "Error") {
                 alert(jsondata["data"]["interval"]["message"]);
             }
-            else if (jsondata["data"]["limits"]["status"] == "Error")
-            {
+            else if (jsondata["data"]["limits"]["status"] == "Error") {
                 alert(jsondata["data"]["limits"]["message"]);
             }
-            else if (jsondata["data"]["start"]["status"] == "Error")
-            {
+            else if (jsondata["data"]["start"]["status"] == "Error") {
                 alert(jsondata["data"]["start"]["message"]);
             }
         }
